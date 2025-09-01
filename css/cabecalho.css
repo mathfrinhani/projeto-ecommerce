@@ -103,16 +103,27 @@
 
     .cabecalho .menu-principal ul {
         flex-direction: row;
+        gap: 1rem;
     }
 
     .menu-hamburguer {
         display: none;
     }
+
+    .cabecalho ul li a {
+        font-size: 0.86624rem;
+    }
+
+
 }
 
 @media (min-width: 1170px) {
     .cabecalho {
         max-width: 1170px;
         margin: 0 auto;
+    }
+
+    .cabecalho ul li a {
+        font-size: 1.2rem;
     }
 }

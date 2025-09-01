@@ -18,8 +18,12 @@ main .produtos ul {
 }
 
 main .produtos .produto {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     max-width: 368px;
     border-radius: 14px;
+    background-color: var(--cor-cinza-escura);
 }
 
 main .produtos img {
@@ -77,6 +81,8 @@ main .informacoes .adicionar-ao-carrinho {
     cursor: pointer;
     margin-top: 0.5rem;
     transition: background-color 0.2s ease-in-out;
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
 }
 
 main .informacoes .adicionar-ao-carrinho:hover {
