@@ -55,6 +55,7 @@ botoesAdicionarAoCarrinho.forEach(botao => {
         };
         salvarProdutosNoCarrinho(carrinho);
         atualizarContadorCarrinho();
+        renderizarTabelaDoCarrinho();
     });
 });
 
@@ -75,8 +76,31 @@ function atualizarContadorCarrinho() {
     carrinho.forEach(produto => {
         total += produto.quantidade;
     });
-
     document.getElementById("contador-carrinho").textContent = total;
 }
-
 atualizarContadorCarrinho();
+
+//1.1.5 renderizar a tabela do carrinho de compras
+function renderizarTabelaDoCarrinho() {
+    const produtos = obterProdutosDoCarrinho();
+    const corpoTabela = document.querySelector("#modal-1-content table tbody");
+    //limpar a tabela
+    corpoTabela.innerHTML = "";
+
+    produtos.forEach(produto => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td class="td-produto">
+                                        <img src="${produto.imagem}"
+                                            alt="${produto.nome}">
+                                    </td>
+                                    <td>${produto.nome}</td>
+                                    <td class="td-preco-unitario">R$${produto.preco.toFixed(2).replace(".", ",")}</td>
+                                    <td class="td-quantidade"><input type="number" value="${produto.quantidade}" min="1"></td>
+                                    <td class="td-preco-total">R$${produto.preco.toFixed(2).replace(".", ",")}</td>
+                                    <td><button class="btn-remover" data-id="${produto.id}" id="deletar"></button></td>`
+            ;
+        corpoTabela.appendChild(tr);
+    })
+}
+
+renderizarTabelaDoCarrinho();
